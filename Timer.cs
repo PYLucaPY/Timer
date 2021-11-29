@@ -150,7 +150,8 @@ public class Timer : MonoBehaviour
             if(!timerFinished &&
                 states[entry.Key].previousTimerFinishedState)
             {
-                entry.Value.onFinishedTimer();
+                if(entry.Value.hasFinishedDelegate)
+                    entry.Value.onFinishedTimer();
             }
 
             states[entry.Key].previousTimerFinishedState = timerFinished;
